@@ -112,3 +112,90 @@
             border-radius: 20px;
             font-size: 0.9em;
         }
+
+        /* 布局优化类 */
+        .feature-content.left-narrow {
+            grid-template-columns: 0.7fr 1.3fr;
+        }
+
+        .feature-content.right-narrow {
+            grid-template-columns: 1.3fr 0.7fr;
+        }
+
+        .image-gallery.grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .full-width-img {
+            width: 100%;
+            height: auto !important;
+            object-fit: contain;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .project-header {
+                padding: 40px 15px;
+                margin-bottom: 20px;
+            }
+
+            .project-header h1 {
+                font-size: 1.8em;
+            }
+
+            .project-header p {
+                font-size: 1em;
+            }
+
+            .feature-section {
+                margin-bottom: 30px;
+            }
+
+            .feature-content,
+            .feature-content[style] {
+                grid-template-columns: 1fr !important;
+                gap: 20px;
+                display: flex !important;
+                flex-direction: column;
+            }
+
+            .feature-text {
+                padding: 20px;
+                order: -1; /* 让文字显示在图片上方 */
+            }
+
+            .feature-text h2 {
+                font-size: 1.5em;
+            }
+
+            .feature-text p {
+                font-size: 1em;
+            }
+
+            .feature-image {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .feature-image img {
+                height: auto;
+                max-height: 400px;
+                width: 100%;
+                object-fit: contain;
+            }
+
+            .image-gallery,
+            .image-gallery[style] {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px;
+            }
+
+            /* 如果只有一张图片，则全宽显示 */
+            .image-gallery:has(img:first-child:last-child),
+            .image-gallery:has(img:first-child:last-child)[style] {
+                grid-template-columns: 1fr !important;
+            }
+        }
